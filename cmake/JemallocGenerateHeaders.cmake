@@ -26,6 +26,8 @@ function(jemalloc_generate_headers output_root)
     
     # Keep jemalloc's internal symbols under the je_ namespace.
     set(private_namespace "je_")
+
+    set(JEMALLOC_USABLE_SIZE_CONST "const")
     
     configure_file(
         "${CMAKE_CURRENT_SOURCE_DIR}/include/jemalloc/internal/jemalloc_preamble.h.in"
