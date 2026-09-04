@@ -2,6 +2,7 @@ cmake_minimum_required(VERSION 3.24)
 
 project(
     jemalloc
+    VERSION 5.3.0
     LANGUAGES C
 )
 
