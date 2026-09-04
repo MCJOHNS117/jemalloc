@@ -54,6 +54,10 @@ jemalloc_generate_headers(
 
 jemalloc_generate_symbol_headers(
     "${JEMALLOC_GENERATED_ROOT}"
+    list(REMOVE_ITEM
+    JEMALLOC_PUBLIC_SYMBOLS
+    cbopaque
+    )
 )
 
 jemalloc_generate_public_header(
@@ -93,7 +97,6 @@ set(
     src/extent_dss.c
     src/extent_mmap.c
     src/fxp.c
-    src/hook.c
     src/hpa.c
     src/hpa_central.c
     src/hpa_hooks.c
@@ -138,6 +141,13 @@ set(
     src/util.c
     src/witness.c
 )
+
+foreach(source IN LISTS JEMALLOC_SOURCES)
+    if(NOT EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/${source}")
+        message(FATAL_ERROR
+            "jemalloc source listed in CMake does not exist: ${source}")
+    endif()
+endforeach()
 
 add_library(
     jemalloc
