@@ -4,9 +4,9 @@
 #define JEMALLOC_INTERNAL_TSD_WIN_H
 
 #include "jemalloc/internal/jemalloc_preamble.h"
+#include "jemalloc/internal/tsd_types.h"
 #include "jemalloc/internal/tsd_internals.h"
 #include "jemalloc/internal/tsd_tls_addr.h"
-#include "jemalloc/internal/tsd_types.h"
 
 /* val should always be the first field of tsd_wrapper_t since accessing
    val is the common path and having val as the first field makes it possible
