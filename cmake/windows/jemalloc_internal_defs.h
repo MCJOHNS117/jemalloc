@@ -160,4 +160,10 @@
  */
 #define JEMALLOC_ZERO_REALLOC_DEFAULT_FREE
 
+/* =========================================================================
+ * Compiler capabilities
+ * ========================================================================= */
+
+#define JEMALLOC_INTERNAL_UNREACHABLE abort
+
 #endif
