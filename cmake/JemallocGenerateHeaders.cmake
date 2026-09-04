@@ -18,6 +18,22 @@ function(jemalloc_generate_headers output_root)
     )
 
     # =========================================================================
+    # Internal preamble
+    # =========================================================================
+    
+    # We are not using a suffixed install name.
+    set(install_suffix "")
+    
+    # Keep jemalloc's internal symbols under the je_ namespace.
+    set(private_namespace "je_")
+    
+    configure_file(
+        "${CMAKE_CURRENT_SOURCE_DIR}/include/jemalloc/internal/jemalloc_preamble.h.in"
+        "${JEMALLOC_INTERNAL_OUTPUT_DIR}/jemalloc_preamble.h"
+        @ONLY
+    )
+
+    # =========================================================================
     # Version
     #
     # The normal jemalloc configure system derives this from git describe.
